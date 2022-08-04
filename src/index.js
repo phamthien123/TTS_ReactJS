@@ -9,12 +9,12 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
-import Showlist from './components/Showlist';
+
 import User from './components/User';
 import Home from './components/Home';
 import Mycalculator from './Calculater/Mycalculator';
-import Mycomponent from './components/Mycomponent';
-import Demo from './Demo/demo';
+import Mycomponent from './ToDoList/Mycomponent';
+import DEmo from './DemoDislayList/demo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -23,10 +23,9 @@ root.render(
     <Routes>
         <Route path="/" element={<App />}>
         <Route path="todoList" element={<Mycomponent />} />
-        <Route path="admins" element={<Showlist />} />
         <Route path="users" element={<User />} />
         <Route path="calcultors" element={<Mycalculator />} />
-        <Route path="demos" element={<Demo />} />
+        <Route path="demos" element={<DEmo />} />
         <Route index element={<Home />} />
       </Route>
     </Routes>

@@ -15,8 +15,6 @@ export default function App() {
           <Outlet/>
     </div>
       <ToastContainer />
-
-     
       </div>   
     
     )

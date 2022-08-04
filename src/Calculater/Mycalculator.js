@@ -2,6 +2,7 @@ import React from "react";
 import  './CSS/Calculator.css';
 import { useState } from "react";
 import { toast } from 'react-toastify';
+//Components
 import DisplayHistory from "./DisplayHistory";
 import InputCal from "./InputCal";
 

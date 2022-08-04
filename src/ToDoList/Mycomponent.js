@@ -1,5 +1,5 @@
 import { useState } from "react";
-import  './todolist.css';
+import  './CSS/todolist.css';
 import { toast } from 'react-toastify'; 
 // import ShowList from "./Showlist";
 const Mycomponent = () => {
@@ -9,26 +9,30 @@ const Mycomponent = () => {
   const [newTodo, setNewtodo] = useState("");
 
   const [Listtodos, setListTodos] = useState([
-    {  id: `${new Date().getTime()}`,
-            name: "Youtube"},
+    {id: 1 , name: "Youtube"},
       ],
   );
 
-
+      //Thông Báo
+  const notify = () => toast.success("Thêm Thành Công");
+  const notifyErorr = () => toast.error("Thêm Không Thành Công");
+  const notifyRemove = () => toast.success("Xóa Thành Công");
+      //Event
   const HandleChange = (event) => {
     setNewtodo(event.target.value);
   };
 
-  const notify = () => toast("Thêm Thành Công");
-  const notifyErorr = () => toast.error("Thêm Không Thành Công");
-  const notifyRemove = () => toast("Xóa Thành Công");
-
   const handleAdd = () => {
+    if(!newTodo){
+      notifyErorr();
+      return;
+    }
+    else {
+      notify()
+    }
       setListTodos([...Listtodos,
         { id: Math.floor(Math.random() * 10000 + 1), name: newTodo },
       ]);
-      if(!newTodo) {notifyErorr()}
-      else {notify()}
   };
 
 
@@ -39,9 +43,7 @@ const Mycomponent = () => {
       setListTodos(NewFileid);
       notifyRemove();
     }
-  
   };
-
  const handleOnclickEdit = (event) =>{
         if (isEmtyObj === false && ojbTodo.id === event.id) {
            if (ojbTodo.name.length > 0) {
@@ -81,13 +83,13 @@ const Mycomponent = () => {
             <div className="card mask-custom">
               <div className="card-body p-4 text-white">
                 <div className="text-center pt-3 pb-2">
-                  <h2 className="my-4">To Do List</h2>
+                  <h2 className="my-4" style={{marginRight:80}}>To Do List</h2>
                 </div>
-                <table className="table text-white mb-0">
+                <table className="table text-white mb-0" style={{marginLeft:15}}>
                   <tbody>
                       <th>
                         <span className="ms-2">
-                          <h2>Số Thứ Tự</h2>
+                          <h2>ID</h2>
                         </span>
                       </th>
                       <td className="align-middle">
@@ -102,7 +104,7 @@ const Mycomponent = () => {
                           <th>
                             <span className="ms-2">{index + 1}</span>
                           </th>
-                          <td className="align-middle" value={newTodo}>{todo.name}</td>
+                          <td className="align-middle">{todo.name}</td>
 
                           <td className="align-middle">
                           <a  href="#!" className="todo-child" key = {todo.id}>
@@ -112,7 +114,7 @@ const Mycomponent = () => {
                                         <>
                                             {
                                                 ojbTodo.id === todo.id ?
-                                                <span><input value={ojbTodo.name} onChange={(event) => handleOnchangeEdit(event)} size={10}></input></span>:
+                                                <span><input value={ojbTodo.name} onChange={(event) => handleOnchangeEdit(event)} size={10} className="input-btn"></input></span>:
                                                 <span></span>
                                             }
                                         </>
@@ -120,7 +122,7 @@ const Mycomponent = () => {
                                     <button onClick={() => handleOnclickEdit(todo)} className="btnedit">
                                         {isEmtyObj === false && ojbTodo.id === todo.id  ? 'Save' : 'Edit'}
                                     </button>
-                              </a>
+                            </a>
                             <button onClick={() => handleRemove(todo.id)} className="btnremove">Xóa</button>
                           </td>
                         </tr>

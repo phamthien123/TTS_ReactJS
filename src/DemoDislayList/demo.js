@@ -1,6 +1,5 @@
 import { useState } from "react";
 import  './demo.css';
-import { toast } from 'react-toastify'; 
 import DemoChild from "./Demochild";
 // import ShowList from "./Showlist";
 const DEmo = () => {

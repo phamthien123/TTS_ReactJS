@@ -1,4 +1,3 @@
-import "./todolist.css";
 const Home = () =>{
     return (
         <div><h1>Trang Chủ</h1></div>
