@@ -1,0 +1,56 @@
+.input-text{
+    padding: 30px;
+    border: 2px solid #f5f5f4;
+    background-color:#f5f5f4;
+    margin: 10px 0 10px 30px;
+    }
+    
+    .flex-container {
+      display: flex;
+      flex-wrap: nowrap;
+      margin-left: 40px;
+    }
+    
+    .flex-container > div {
+      background-color: #f0fdfa;
+      width: 95px;
+      margin: 5px;
+      text-align: center;
+      line-height: 75px;
+      font-size: 30px;
+    }
+    .casio{
+      background: linear-gradient(#e66465, #9198e5);
+      display: inline-block;
+      height: 600px;
+      margin-top: 50px;
+      margin-left: 35%;
+      width: 500px;
+      padding-top: 25px;
+    }
+    
+    .history>h1{
+      position: absolute;
+      top: 10%;
+      left: 5%;
+      color:#fde047;
+    }
+    
+    .historyMath {
+      position: absolute;
+      left: 5%;
+      top: 20%;
+      font-size: 30px;
+      color:white;
+    }
+    .delete {
+        position: absolute;
+        top: 11.5%;
+        left: 28%;
+        font-size: 30px;
+        color:white;
+    }
+.main{
+    background: linear-gradient(to left, #7A7FBA, #11C37C);
+}
+    
