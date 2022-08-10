@@ -1,5 +1,8 @@
 const DisplayHistory = (props) =>{
    const  totals  = props.history;
+   const deleteTotal = (id) =>{
+     props.deleteTotalInParent(id);
+   }
  return (
     <div className="history">
           <h1>Lịch Sử Phép Tính</h1>
@@ -10,7 +13,7 @@ const DisplayHistory = (props) =>{
             </div>
             ))}     
         </div>
-        {/* <i className="fa-solid fa-trash-can delete" onClick={deleteTotal}></i>  */}
+        <i className="fa-solid fa-trash-can delete" onClick={deleteTotal}></i> 
       </div>
  )
 }

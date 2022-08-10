@@ -19,7 +19,6 @@ const Header = () => {
             <NavLink to="/todoList" className='nav-link'>ListTodo</NavLink>
             <NavLink to="/users" className='nav-link'>User</NavLink>
             <NavLink to="/calcultors" className='nav-link'>Calculator</NavLink>
-            <NavLink to="/demos" className='nav-link'>Demo DisPlayList</NavLink>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>

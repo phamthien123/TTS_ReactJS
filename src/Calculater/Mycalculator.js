@@ -5,8 +5,7 @@ import { toast } from 'react-toastify';
 //Components
 import DisplayHistory from "./DisplayHistory";
 import InputCal from "./InputCal";
-
-/*eslint-disable no-eval */ 
+import ButtonValue from "./Button";
 
 const Mycalculator = () =>  {
 
@@ -14,23 +13,26 @@ const Mycalculator = () =>  {
    const [totals,setTotal] = useState([]);
    
     const getValue = (value) => {
-    setMessage(message + value);
+      setMessage(message + value);
   };
 
   //Thông Báo:toastify
- 
-    const notify = () => toast("Kết Quả đã được lưu");
+    const notify = () => toast.success("Kết Quả đã được lưu");
     const notify1 = () => toast.error("Chưa Nhập phép tính");
     
-    const TotalValue = () => {
-    setTotal((prev) => [...prev, message + ` = ` + eval(message)]); //[...prev]:bảo lưu mảng cũ  
-    setMessage(eval(message));
 
-    if(!message) {
+    const TotalValue = () => {
+    // eslint-disable-next-line
+    setMessage( Function(`"use strict";return (${message})`)());
+    if(!message && totals !== undefined) {
       notify1();
+      clearValue();
+      return;
     }
     else{
-      notify();
+      notify(); 
+       // eslint-disable-next-line
+      setTotal((prev) => [...prev, message + ` = ` +  Function(`"use strict";return (${message})`)()]); 
     }
   };
 
@@ -43,47 +45,24 @@ const Mycalculator = () =>  {
   };
 
    const deleteTotal = () => {
-    // const revmoe = [...totals].filter(total => total.number !== number);
-    // setTotal(revmoe);
     setTotal([]); 
   }
-
     return(
     <> 
 <div className="main vh-100">
     <div className="casio">
       <InputCal value={message}/>
-       <div className="flex-container">
-          <div onClick={() => getValue("1")}>1</div>
-          <div onClick={() => getValue("2")}>2</div>
-          <div onClick={() => getValue("3")}>3</div>
-          <div onClick={() => getValue("+")}>+</div>
-      </div>
-        <div className="flex-container">
-          <div onClick={() => getValue("4")}>4</div>
-          <div onClick={() => getValue("5")}>5</div>
-          <div onClick={() => getValue("6")}>6</div>
-          <div onClick={() => getValue("-")}>-</div>
-        </div>
-        <div className="flex-container">
-          <div onClick={() => getValue("7")}>7</div>
-          <div onClick={() => getValue("8")}>8</div>
-          <div onClick={() => getValue("9")}>9</div>
-          <div onClick={() => getValue("*")}>*</div>
-        </div>
-        <div className="flex-container">
-          <div onClick={() => getValue(".")}>.</div>
-          <div onClick={() => getValue("0")}>0</div>
-          <div onClick={TotalValue}>=</div>
-          <div onClick={() => getValue("/")}>/</div>
-        </div>
-        <div className="flex-container">
-          <div onClick={RemoveValue}>C</div>
-          <div onClick={clearValue}>Clear</div>
-        </div>
-      </div>
+      <ButtonValue 
+      ButtonValue={getValue}
+      btnTotalValue = {TotalValue}
+      btnRemoveValue={RemoveValue}
+      btnClearValue={clearValue}
+      />
     </div>
-    <DisplayHistory history={totals}/>
+</div>
+    <DisplayHistory history={totals}
+    deleteTotalInParent={deleteTotal}
+    />
   </>
   )
 }

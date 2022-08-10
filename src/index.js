@@ -14,7 +14,6 @@ import User from './components/User';
 import Home from './components/Home';
 import Mycalculator from './Calculater/Mycalculator';
 import Mycomponent from './ToDoList/Mycomponent';
-import DEmo from './DemoDislayList/demo';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -25,7 +24,6 @@ root.render(
         <Route path="todoList" element={<Mycomponent />} />
         <Route path="users" element={<User />} />
         <Route path="calcultors" element={<Mycalculator />} />
-        <Route path="demos" element={<DEmo />} />
         <Route index element={<Home />} />
       </Route>
     </Routes>

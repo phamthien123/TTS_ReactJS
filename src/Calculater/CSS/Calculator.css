@@ -10,7 +10,7 @@
       flex-wrap: nowrap;
       margin-left: 40px;
     }
-    
+
     .flex-container > div {
       background-color: #f0fdfa;
       width: 95px;
@@ -52,5 +52,8 @@
     }
 .main{
     background: linear-gradient(to left, #7A7FBA, #11C37C);
+}
+.btn-Onclick{
+  background-color: #7dd3fc !important;
 }
     
