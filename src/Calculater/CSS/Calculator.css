@@ -20,7 +20,7 @@
       font-size: 30px;
     }
     .casio{
-      background: linear-gradient(#e66465, #9198e5);
+      background: linear-gradient(#67e8f9, #9198e5);
       display: inline-block;
       height: 600px;
       margin-top: 50px;
@@ -43,12 +43,11 @@
       font-size: 30px;
       color:white;
     }
-    .delete {
-        position: absolute;
-        top: 11.5%;
-        left: 28%;
+    .xmark {
+        margin-left: 30px;
         font-size: 30px;
-        color:white;
+        color:red;  
+
     }
 .main{
     background: linear-gradient(to left, #7A7FBA, #11C37C);
@@ -57,3 +56,18 @@
   background-color: #7dd3fc !important;
 }
     
+.flex-container1 {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 40px;
+}
+
+.flex-container1 > div {
+  background-color: #f0fdfa;
+  width: 90%;
+  margin: 5px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+ 
+}

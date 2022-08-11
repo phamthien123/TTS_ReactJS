@@ -16,37 +16,44 @@ const Mycalculator = () =>  {
       setMessage(message + value);
   };
 
+
   //Thông Báo:toastify
     const notify = () => toast.success("Kết Quả đã được lưu");
-    const notify1 = () => toast.error("Chưa Nhập phép tính");
-    
+    const notifyErorr = () => toast.error("Chưa Nhập phép tính");
+    const notifyDel = () => toast.success("Xóa thành công!!");
 
     const TotalValue = () => {
     // eslint-disable-next-line
-    setMessage( Function(`"use strict";return (${message})`)());
+    let ValueHistory = {
+      id: `${new Date().getTime()}`,
+      name:message,
+    // eslint-disable-next-line
+      TotalValueNumber: Function(`"use strict";return (${message})`)()
+    }
+     // eslint-disable-next-line
+    setMessage(Function(`"use strict";return (${message})`)());
     if(!message && totals !== undefined) {
-      notify1();
+      notifyErorr();
       clearValue();
       return;
     }
     else{
       notify(); 
-       // eslint-disable-next-line
-      setTotal((prev) => [...prev, message + ` = ` +  Function(`"use strict";return (${message})`)()]); 
+      // setTotal((prev) => [...prev,message + ` = ` +  Function(`"use strict";return (${message})`)()]);  
+      setTotal([...totals,ValueHistory])
     }
-  };
-
-   const RemoveValue = () => {
-    setMessage(message.slice(0, -1));
   };
 
    const clearValue = () => {
     setMessage("");
   };
 
-   const deleteTotal = () => {
-    setTotal([]); 
-  }
+  const deleteTotal = (todoId) => {
+      let NewFileid = totals.filter((item) => item.id !== todoId);
+      setTotal(NewFileid);
+      notifyDel();  
+    
+  };
     return(
     <> 
 <div className="main vh-100">
@@ -55,11 +62,10 @@ const Mycalculator = () =>  {
       <ButtonValue 
       ButtonValue={getValue}
       btnTotalValue = {TotalValue}
-      btnRemoveValue={RemoveValue}
       btnClearValue={clearValue}
       />
     </div>
-</div>
+</div>  
     <DisplayHistory history={totals}
     deleteTotalInParent={deleteTotal}
     />

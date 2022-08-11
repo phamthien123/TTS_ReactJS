@@ -9,11 +9,11 @@ const DisplayHistory = (props) =>{
         <div className="historyMath">
         {totals.map((total,index) => (
             <div key={index}>
-               <div><span>{total}</span></div>
+               <div><span>{index + 1}. {total.name} = {total.TotalValueNumber}</span>
+               <i className="fa-solid fa-xmark xmark" onClick={() => deleteTotal(total.id)}></i></div>
             </div>
-            ))}     
+            ))}   
         </div>
-        <i className="fa-solid fa-trash-can delete" onClick={deleteTotal}></i> 
       </div>
  )
 }
